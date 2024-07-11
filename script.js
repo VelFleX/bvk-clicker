@@ -13,7 +13,7 @@ if (clicks < 10) {
 } else if (clicks >= 100) {
   slogan.textContent = "Всем всё платится";
 } else if (clicks >= 500) {
-  slogan.textContent = "Внуку помогай маслёнок";
+  slogan.textContent = "Банду Елькина под суд!";
 } else if (clicks >= 1000) {
   slogan.textContent = "Десятник";
 } else if (clicks >= 2000) {
