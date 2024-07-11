@@ -6,9 +6,22 @@ const counter = document.getElementById("coins-counter");
 counter.textContent = (getCash("clicks") || 0) + " BVK";
 
 let clicks = getCash("clicks") || 0;
-if (clicks > 0) {
-  const slogan = document.getElementById("slogan");
-  slogan.textContent = "Внуку помогай";
+const slogan = document.getElementById("slogan");
+
+if (clicks < 10) {
+  slogan.textContent = "Внуку помогай маслёнок";
+} else if (clicks >= 100) {
+  slogan.textContent = "Всем всё платится";
+} else if (clicks >= 500) {
+  slogan.textContent = "Внуку помогай маслёнок";
+} else if (clicks >= 1000) {
+  slogan.textContent = "Десятник";
+} else if (clicks >= 2000) {
+  slogan.textContent = "Адепт";
+} else if (clicks >= 5000) {
+  slogan.textContent = "5тыщ 5тыщ";
+} else if (clicks >= 10000) {
+  slogan.textContent = "Внук Мавроди";
 }
 
 coin.addEventListener("click", function (e) {
