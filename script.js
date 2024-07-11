@@ -9,20 +9,20 @@ let clicks = getCash("clicks") || 0;
 const slogan = document.getElementById("slogan");
 
 const updateSlogan = (clicks) => {
-  if (clicks < 10) {
-    slogan.textContent = "Внуку помогай маслёнок";
-  } else if (clicks >= 100) {
-    slogan.textContent = "Всем всё платится";
-  } else if (clicks >= 500) {
-    slogan.textContent = "Банду Елькина под суд!";
-  } else if (clicks >= 1000) {
-    slogan.textContent = "Десятник";
-  } else if (clicks >= 2000) {
-    slogan.textContent = "Адепт";
+  if (clicks >= 10000) {
+    slogan.textContent = "Внук Мавроди";
   } else if (clicks >= 5000) {
     slogan.textContent = "5тыщ 5тыщ";
-  } else if (clicks >= 10000) {
-    slogan.textContent = "Внук Мавроди";
+  } else if (clicks >= 2000) {
+    slogan.textContent = "Адепт";
+  } else if (clicks >= 1000) {
+    slogan.textContent = "Десятник";
+  } else if (clicks >= 500) {
+    slogan.textContent = "Банду Елькина под суд!";
+  } else if (clicks >= 100) {
+    slogan.textContent = "Всем всё платится";
+  } else {
+    slogan.textContent = "Внуку помогай маслёнок";
   }
 };
 
