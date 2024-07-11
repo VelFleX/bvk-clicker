@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: #0e0e10;
+  color: white;
+  padding: 24px 8px;
+}
+
+#root {
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+y-center {
+  justify-content: center;
+}
+
+y-space {
+  justify-content: space-between;
+}
+
+.x-center {
+  align-items: center;
+}
+
+.coin-img {
+  width: 280px;
+  border-radius: 50%;
+  margin: 100px 0;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.coin-scale {
+  animation: scale 1s;
+}
+
+@keyframes scale {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.1;
+  }
+}
+
+.number {
+  position: absolute;
+  font-size: 2em;
+  pointer-events: none;
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+    margin-top: 0px;
+  }
+  to {
+    opacity: 0;
+    margin-top: -250px;
+  }
+}
+
+.footer {
+  width: 100%;
+  align-self: flex-end;
+}
+
+.footer__button {
+  max-width: 100%;
+  width: 100%;
+  border: none;
+  padding: 16px 24px;
+  font-size: 16px;
+}
