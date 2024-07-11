@@ -6,6 +6,10 @@ const counter = document.getElementById("coins-counter");
 counter.textContent = (getCash("clicks") || 0) + " BVK";
 
 let clicks = getCash("clicks") || 0;
+if (clicks > 0) {
+  const slogan = document.getElementById("slogan");
+  slogan.textContent = "Внуку помогай";
+}
 
 coin.addEventListener("click", function (e) {
   const number = document.createElement("div");
