@@ -6,7 +6,9 @@ const counter = document.getElementById("coins-counter");
 counter.textContent = (getCash("clicks") || 0) + " BVK";
 
 let clicks = getCash("clicks") || 0;
+
 coin.addEventListener("click", function (e) {
+  preventDefault(e);
   const number = document.createElement("div");
   number.classList.add("number");
   number.style.left = e.clientX + "px";
@@ -17,16 +19,12 @@ coin.addEventListener("click", function (e) {
   setTimeout(function () {
     number.remove();
   }, 1000);
-});
 
-coin.addEventListener("click", function () {
   this.style.transform = "scale(1.04)";
   setTimeout(() => {
     this.style.transform = "";
   }, 100);
-});
 
-coin.addEventListener("click", function () {
   clicks++;
   setCash("clicks", clicks);
   counter.textContent = clicks.toLocaleString() + " BVK";
