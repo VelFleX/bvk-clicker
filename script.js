@@ -54,3 +54,15 @@ coin.addEventListener("click", function (e) {
 document.getElementById("reload").addEventListener("click", function () {
   location.reload(true);
 });
+
+const pages = document.querySelectorAll(".page");
+const footerBtns = document.querySelectorAll(".footer__button");
+
+footerBtns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    pages.forEach((page) => {
+      page.classList.add("display-none");
+    });
+    document.getElementById(btn.textContent.toLocaleLowerCase()).classList.remove("display-none");
+  });
+});

@@ -7,15 +7,26 @@
   </head>
   <body>
     <div class="flex flex-column" id="root">
-      <header class="flex flex-center flex-column">
-        <h1 id="slogan"></h1>
-        <h2>Монет:</h2>
-        <h2 id="coins-counter">0 BVK</h2>
-      </header>
-      <main class="flex flex-center">
-        <img class="coin-img" id="coin" src="bvk-coin.jpg" alt="Click Me" draggable="false" />
-      </main>
-      <footer class="footer flex flex-center">
+      <div class="page" id="mine">
+        <header class="flex flex-center flex-column">
+          <h1 id="slogan"></h1>
+          <h2>Монет:</h2>
+          <h2 id="coins-counter">0 BVK</h2>
+        </header>
+        <main class="flex flex-center">
+          <img class="coin-img" id="coin" src="bvk-coin.jpg" alt="Click Me" draggable="false" />
+        </main>
+      </div>
+      <div class="page display-none" id="refs">
+        <h1>Refs</h1>
+      </div>
+      <div class="page display-none" id="tasks">
+        <h1>Tasks</h1>
+      </div>
+      <div class="page display-none" id="boosts">
+        <h1>Boosts</h1>
+      </div>
+      <footer class="footer flex flex-center" style="max-height: 100vh; height: 100%; align-self: flex-end; align-items: flex-end">
         <button class="footer__button" id="reload">Mine</button>
         <button class="footer__button">Refs</button>
         <button class="footer__button">Tasks</button>
