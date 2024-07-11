@@ -8,7 +8,6 @@ counter.textContent = (getCash("clicks") || 0) + " BVK";
 let clicks = getCash("clicks") || 0;
 
 coin.addEventListener("click", function (e) {
-  preventDefault(e);
   const number = document.createElement("div");
   number.classList.add("number");
   number.style.left = e.clientX + "px";
