@@ -3,9 +3,9 @@ const getCash = (key) => localStorage.getItem(key);
 
 const coin = document.getElementById("coin");
 const counter = document.getElementById("coins-counter");
-counter.textContent = (getCash("clicks") || 0) + " BVK";
-
 let clicks = getCash("clicks") || 0;
+counter.textContent = parseInt(clicks).toLocaleString() + " BVK";
+
 const slogan = document.getElementById("slogan");
 
 const updateSlogan = (clicks) => {
