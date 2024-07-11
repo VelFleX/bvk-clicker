@@ -32,3 +32,7 @@ coin.addEventListener("click", function (e) {
   setCash("clicks", clicks);
   counter.textContent = clicks.toLocaleString() + " BVK";
 });
+
+document.getElementById("reload").addEventListener("click", function () {
+  location.reload(true);
+});
