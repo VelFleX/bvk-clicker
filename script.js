@@ -2,14 +2,46 @@ const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
 
 const coin = document.getElementById("coin");
+const coinsValue = parseInt(getCash("coins")) || 0;
 const counter = document.getElementById("coins-counter");
-let clicks = getCash("clicks") || 0;
-counter.textContent = parseInt(clicks).toLocaleString() + " BVK";
-
+let clicks = parseInt(getCash("clicks")) || 0;
+counter.textContent = clicks.toLocaleString() + " BVK";
 const slogan = document.getElementById("slogan");
 
+const energyCap = document.getElementById("energyCap");
+const currentEnergy = document.getElementById("currentEnergy");
+const energyBar = document.getElementById("energyBar");
+let energyCapValue = parseInt(getCash("energyCap")) || 1000;
+let currentEnergyValue = parseInt(getCash("currentEnergy")) || 0;
+
+const userLevel = document.getElementById("level");
+const expCap = document.getElementById("expCap");
+const currentExp = document.getElementById("currentExp");
+const expBar = document.getElementById("expBar");
+let userLevelValue = parseInt(getCash("userLevel")) || 1;
+let expCapValue = parseInt(getCash("expCap")) || calculateExp(userLevelValue);
+let currentExpValue = parseInt(getCash("currentExp")) || 0;
+
+(function loadEnergy() {
+  const lastEnergyRegen = parseInt(getCash("lastEnergyRegen")) || Date.now();
+  const timePassed = Date.now() - lastEnergyRegen;
+  currentEnergyValue = Math.min(Math.floor(timePassed / 1800 + currentEnergyValue), energyCapValue);
+  updateEnergyBar();
+  energyCap.textContent = energyCapValue;
+  setCash("currentEnergy", currentEnergyValue);
+  if (timePassed > 1800) setCash("lastEnergyRegen", Date.now());
+})();
+
+(function loadExp() {
+  userLevel.textContent = userLevelValue;
+  expCap.textContent = expCapValue;
+  updateExpBar();
+})();
+
 const updateSlogan = (clicks) => {
-  if (clicks >= 10000) {
+  if (clicks >= 50000) {
+    slogan.textContent = "Богосатана";
+  } else if (clicks >= 10000) {
     slogan.textContent = "Внук Мавроди";
   } else if (clicks >= 5000) {
     slogan.textContent = "5тыщ 5тыщ";
@@ -29,6 +61,7 @@ const updateSlogan = (clicks) => {
 updateSlogan(clicks);
 
 coin.addEventListener("click", function (e) {
+  if (currentEnergyValue <= 0) return;
   const number = document.createElement("div");
   number.classList.add("number");
   number.style.left = e.clientX + "px";
@@ -49,10 +82,9 @@ coin.addEventListener("click", function (e) {
   setCash("clicks", clicks);
   updateSlogan(clicks);
   counter.textContent = clicks.toLocaleString() + " BVK";
-});
 
-document.getElementById("reload").addEventListener("click", function () {
-  location.reload(true);
+  decEnergy(1);
+  addExp(1);
 });
 
 const pages = document.querySelectorAll(".page");
@@ -66,3 +98,57 @@ footerBtns.forEach((btn) => {
     document.getElementById(btn.textContent.toLocaleLowerCase()).classList.remove("display-none");
   });
 });
+
+function updateEnergyBar() {
+  energyBar.style.width = `${(currentEnergyValue / energyCapValue) * 100}%`;
+  currentEnergy.textContent = currentEnergyValue;
+}
+
+function updateExpBar() {
+  expBar.style.width = `${(currentExpValue / expCapValue) * 100}%`;
+  currentExp.textContent = currentExpValue;
+}
+
+function decEnergy(value) {
+  currentEnergyValue -= value;
+  updateEnergyBar();
+  setCash("currentEnergy", currentEnergyValue);
+  setCash("lastEnergyRegen", Date.now());
+}
+
+function addEnergy(value) {
+  if (currentEnergyValue < energyCapValue) {
+    currentEnergyValue += value;
+    updateEnergyBar();
+    setCash("currentEnergy", currentEnergyValue);
+    setCash("lastEnergyRegen", Date.now());
+  }
+}
+
+function addExp(value) {
+  if (currentExpValue + value < expCapValue) {
+    currentExpValue += value;
+    updateExpBar();
+    setCash("currentExp", currentExpValue);
+  } else if (currentExpValue + value >= expCapValue) {
+    userLevelValue++;
+    currentExpValue = Math.abs(expCapValue - currentExpValue - value);
+    const newCap = calculateExp(userLevelValue);
+    expCapValue = newCap;
+    expCap.textContent = newCap;
+    updateExpBar();
+    userLevel.textContent = userLevelValue;
+    setCash("currentExp", currentExpValue);
+    setCash("userLevel", userLevelValue);
+    setCash("expCap", newCap);
+  }
+}
+
+function calculateExp(level) {
+  if (level < 1) return 0;
+  const baseExperience = 100 * level;
+  const growthMultiplier = 1.15;
+  return parseInt(baseExperience * Math.pow(growthMultiplier, level - 1));
+}
+
+setInterval(() => currentEnergyValue !== energyCapValue && addEnergy(1), 1800);

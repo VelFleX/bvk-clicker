@@ -10,15 +10,36 @@
 body {
   background: #0e0e10;
   color: white;
-  padding: 24px 8px;
 }
 
 #root {
-  height: calc(100dvh - 48px);
+  height: 100dvh;
+  padding: 0 8px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header {
+  max-height: 100vh;
+  height: 100%;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.footer {
+  max-height: 100vh;
+  height: 100%;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.page {
+  flex-basis: 100%;
 }
 
 .display-none {
-  display: none;
+  display: none !important;
 }
 
 .flex {
@@ -34,22 +55,29 @@ body {
   align-items: center;
 }
 
-y-center {
+.justify-center {
   justify-content: center;
 }
 
-y-space {
+.justify-between {
   justify-content: space-between;
 }
 
-.x-center {
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
   align-items: center;
+}
+
+.gap-8 {
+  gap: 8px;
 }
 
 .coin-img {
   width: 280px;
   border-radius: 50%;
-  margin: 100px 0;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -89,6 +117,39 @@ y-space {
     opacity: 0;
     margin-top: -250px;
   }
+}
+
+.progressbars {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 24px;
+}
+
+.progressbar {
+  width: 100%;
+  height: 16px;
+  border-radius: 4px;
+  position: relative;
+  background: white;
+}
+
+.progressbar__progress {
+  width: 50%;
+  height: 100%;
+  border-radius: inherit;
+  background: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progressbar__text {
+  color: black;
+  text-wrap: nowrap;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
 .footer {

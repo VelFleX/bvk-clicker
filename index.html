@@ -7,15 +7,30 @@
   </head>
   <body>
     <div class="flex flex-column" id="root">
-      <div class="page" id="mine">
-        <header class="flex flex-center flex-column">
+      <header class="header flex justify-center">
+        <h5>Лвл <span id="level"></span></h5>
+      </header>
+      <div class="page flex flex-column flex-center justify-around" id="mine">
+        <div class="flex flex-center flex-column">
           <h1 id="slogan"></h1>
           <h2>Монет:</h2>
           <h2 id="coins-counter">0 BVK</h2>
-        </header>
-        <main class="flex flex-center">
-          <img class="coin-img" id="coin" src="bvk-coin.jpg" alt="Click Me" draggable="false" />
-        </main>
+        </div>
+        <img class="coin-img" id="coin" src="bvk-coin.jpg" alt="Click Me" draggable="false" />
+        <div class="progressbars flex flex-column gap-8">
+          <div class="bar">
+            <div class="progressbar">
+              <div class="progressbar__progress" id="energyBar"></div>
+              <div class="progressbar__text">Энергия <span id="currentEnergy"></span> / <span id="energyCap"></span></div>
+            </div>
+          </div>
+          <div class="bar">
+            <div class="progressbar">
+              <div class="progressbar__progress" id="expBar"></div>
+              <div class="progressbar__text">Опыт <span id="currentExp"></span> / <span id="expCap"></span></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="page display-none" id="refs">
         <h1>Refs</h1>
@@ -26,7 +41,7 @@
       <div class="page display-none" id="boosts">
         <h1>Boosts</h1>
       </div>
-      <footer class="footer flex flex-center" style="max-height: 100vh; height: 100%; align-self: flex-end; align-items: flex-end">
+      <footer class="footer flex">
         <button class="footer__button" id="reload">Mine</button>
         <button class="footer__button">Refs</button>
         <button class="footer__button">Tasks</button>
