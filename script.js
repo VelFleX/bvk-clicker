@@ -5,7 +5,7 @@ const platform = params.get("tgWebAppPlatform");
 if (platform !== "mobile") {
   const root = document.getElementById("root");
   root.classList.add("flex-center");
-  root.textContent = "Только для мобильной версии";
+  root.textContent = "Только для мобильных устройств";
 } else {
   const setCash = (key, value) => localStorage.setItem(key, value);
   const getCash = (key) => localStorage.getItem(key);
