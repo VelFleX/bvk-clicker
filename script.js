@@ -155,3 +155,4 @@ function calculateExp(level) {
 }
 
 setInterval(() => currentEnergyValue !== energyCapValue && addEnergy(1), 1800);
+ву;
