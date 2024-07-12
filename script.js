@@ -2,7 +2,7 @@ const hash = window.location.hash.slice(1);
 const params = new URLSearchParams(hash);
 
 const platform = params.get("tgWebAppPlatform");
-if (platform !== "mobile" || /Windows/.test(navigator.userAgent || navigator.vendor || window.opera)) {
+if (platform !== "mobile" || !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
   const root = document.getElementById("root");
   root.classList.add("flex-center");
   root.textContent = "Только для мобильной версии";
