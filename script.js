@@ -5,6 +5,7 @@ const coin = document.getElementById("coin");
 const coinsValue = parseInt(getCash("coins")) || 0;
 const counter = document.getElementById("coins-counter");
 let clicks = parseInt(getCash("clicks")) || 0;
+let lastTimeClick = 0;
 counter.textContent = clicks.toLocaleString() + " BVK";
 const slogan = document.getElementById("slogan");
 
@@ -62,6 +63,8 @@ updateSlogan(clicks);
 
 coin.addEventListener("click", function (e) {
   if (currentEnergyValue <= 0) return;
+  if (Date.now() - lastTimeClick < 50) return;
+  lastTimeClick = Date.now();
   const number = document.createElement("div");
   number.classList.add("number");
   number.style.left = e.clientX + "px";
