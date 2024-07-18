@@ -1,4 +1,4 @@
-const version = "0.1.2";
+const version = "0.1.3";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
@@ -77,7 +77,19 @@ function handleEvent(e) {
 let touch = false;
 
 coin.addEventListener("touchstart", function (e) {
+  e.preventDefault();
   touch = true;
+  if (e.touches.length > 0) {
+    touch = true;
+  }
+});
+
+coin.addEventListener("touchmove", function (e) {
+  if (isRealTouch && e.touches.length > 0) {
+    touch = true;
+  } else {
+    touch = false;
+  }
 });
 
 coin.addEventListener("touchend", function (e) {
@@ -104,6 +116,7 @@ coin.addEventListener("touchend", function (e) {
 
   decEnergy(1);
   addExp(1);
+  e.preventDefault();
 });
 
 const pages = document.querySelectorAll(".page");
