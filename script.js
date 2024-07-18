@@ -1,4 +1,4 @@
-const version = "0.1.6.1";
+const version = "0.1.6.2";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
@@ -94,7 +94,7 @@ coin.addEventListener("touchmove", function (e) {
 coin.addEventListener("touchend", function (e) {
   if (!touch) return;
   touch = false;
-  // if (Date.now() - touchStartTime < 50) return;
+  if (Date.now() - touchStartTime < 30) return;
   if (currentEnergyValue <= 0) return;
   handleEvent(e.changedTouches[0]);
 
