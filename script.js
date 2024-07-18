@@ -1,4 +1,4 @@
-const version = "0.1.0";
+const version = "0.1.1";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
@@ -65,16 +65,20 @@ const updateSlogan = (clicks) => {
 
 updateSlogan(clicks);
 
-coin.addEventListener("touchend", function (e) {
-  if (currentEnergyValue <= 0) return;
-  if (Date.now() - lastTimeClick < 50) return;
-  lastTimeClick = Date.now();
+function handleEvent(e) {
   const number = document.createElement("div");
   number.classList.add("number");
   number.style.left = e.clientX + "px";
   number.style.top = e.clientY + "px";
   number.innerText = "+1";
   document.getElementById("root").appendChild(number);
+}
+
+coin.addEventListener("touchend", function (e) {
+  if (currentEnergyValue <= 0) return;
+  if (Date.now() - lastTimeClick < 50) return;
+  lastTimeClick = Date.now();
+  handleEvent(e.changedTouches[0]);
 
   setTimeout(function () {
     number.remove();
