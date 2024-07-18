@@ -75,10 +75,10 @@ function handleEvent(e) {
 }
 
 let touch = false;
+let touchStartTime = 0;
 
 coin.addEventListener("touchstart", function (e) {
-  e.preventDefault();
-  touch = true;
+  touchStartTime = Date.now();
   if (e.touches.length > 0) {
     touch = true;
   }
@@ -94,6 +94,7 @@ coin.addEventListener("touchmove", function (e) {
 
 coin.addEventListener("touchend", function (e) {
   if (!touch) return;
+  if (Date.now() - touchStartTime < 50) return;
   touch = false;
   if (currentEnergyValue <= 0) return;
   if (Date.now() - lastTimeClick < 50) return;
