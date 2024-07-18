@@ -9,7 +9,6 @@ const coin = document.getElementById("coin");
 const coinsValue = parseInt(getCash("coins")) || 0;
 const counter = document.getElementById("coins-counter");
 let clicks = parseInt(getCash("clicks")) || 0;
-let lastTimeClick = 0;
 counter.textContent = clicks.toLocaleString() + " BVK";
 const slogan = document.getElementById("slogan");
 
@@ -94,11 +93,9 @@ coin.addEventListener("touchmove", function (e) {
 
 coin.addEventListener("touchend", function (e) {
   if (!touch) return;
-  if (Date.now() - touchStartTime < 50) return;
   touch = false;
+  if (Date.now() - touchStartTime < 50) return;
   if (currentEnergyValue <= 0) return;
-  if (Date.now() - lastTimeClick < 50) return;
-  lastTimeClick = Date.now();
   handleEvent(e.changedTouches[0]);
 
   setTimeout(function () {
