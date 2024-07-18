@@ -1,4 +1,4 @@
-const version = "0.1.1";
+const version = "0.1.2";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
@@ -74,7 +74,15 @@ function handleEvent(e) {
   document.getElementById("root").appendChild(number);
 }
 
+let touch = false;
+
+coin.addEventListener("touchstart", function (e) {
+  touch = true;
+});
+
 coin.addEventListener("touchend", function (e) {
+  if (!touch) return;
+  touch = false;
   if (currentEnergyValue <= 0) return;
   if (Date.now() - lastTimeClick < 50) return;
   lastTimeClick = Date.now();
