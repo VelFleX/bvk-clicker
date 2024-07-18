@@ -20,6 +20,12 @@ body {
   margin: 0 auto;
 }
 
+#version {
+  position: absolute;
+  font-size: 10px;
+  top: -2px;
+}
+
 .header {
   max-height: 100vh;
   height: 100%;

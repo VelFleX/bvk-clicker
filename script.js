@@ -1,3 +1,7 @@
+const version = "0.1.0";
+const $version = document.getElementById("version");
+$version.textContent = version;
+
 const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
 
@@ -61,7 +65,7 @@ const updateSlogan = (clicks) => {
 
 updateSlogan(clicks);
 
-coin.addEventListener("click", function (e) {
+coin.addEventListener("touchend", function (e) {
   if (currentEnergyValue <= 0) return;
   if (Date.now() - lastTimeClick < 50) return;
   lastTimeClick = Date.now();
