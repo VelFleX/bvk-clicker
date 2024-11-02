@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="your-policy-here" />
     <title>bvk clicker</title>
     <link rel="stylesheet" href="css.css" />
   </head>
@@ -42,11 +43,11 @@
       <div class="page display-none" id="boosts">
         <h1>Boosts</h1>
       </div>
-      <footer class="footer flex">
-        <button class="footer__button" id="reload">Mine</button>
-        <button class="footer__button">Refs</button>
-        <button class="footer__button">Tasks</button>
-        <button class="footer__button">Boosts</button>
+      <footer id="footer">
+        <button class="navigation-btn navigation-btn--active">Mine</button>
+        <button class="navigation-btn">Refs</button>
+        <button class="navigation-btn">Tasks</button>
+        <button class="navigation-btn">Boosts</button>
       </footer>
     </div>
     <script src="script.js"></script>

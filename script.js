@@ -1,4 +1,4 @@
-const version = "0.1.6.4";
+const version = "0.1.6.5";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
@@ -43,22 +43,25 @@ let currentExpValue = parseInt(getCash("currentExp")) || 0;
 })();
 
 const updateSlogan = (clicks) => {
-  if (clicks >= 50000) {
-    slogan.textContent = "Богосатана";
-  } else if (clicks >= 10000) {
-    slogan.textContent = "Внук Мавроди";
-  } else if (clicks >= 5000) {
-    slogan.textContent = "5тыщ 5тыщ";
-  } else if (clicks >= 2000) {
-    slogan.textContent = "Адепт";
-  } else if (clicks >= 1000) {
-    slogan.textContent = "Десятник";
-  } else if (clicks >= 500) {
-    slogan.textContent = "Банду Елькина под суд!";
-  } else if (clicks >= 100) {
-    slogan.textContent = "Всем всё платится";
-  } else {
-    slogan.textContent = "Внуку помогай маслёнок";
+  const slogans = {
+    100000: "Бог денег",
+    50000: "Богосатана",
+    10000: "Внук Мавроди",
+    5000: "5тыщ 5тыщ",
+    2000: "Адепт",
+    1000: "Десятник",
+    500: "Банду Елькина под суд!",
+    100: "Всем всё платится",
+    0: "Внуку помогай маслёнок",
+  };
+  const sortedKeys = Object.keys(slogans)
+    .map(Number)
+    .sort((a, b) => b - a);
+  for (const clicksThreshold of sortedKeys) {
+    if (clicks >= clicksThreshold) {
+      slogan.textContent = slogans[clicksThreshold];
+      break;
+    }
   }
 };
 
@@ -118,10 +121,14 @@ coin.addEventListener("touchend", function (e) {
 });
 
 const pages = document.querySelectorAll(".page");
-const footerBtns = document.querySelectorAll(".footer__button");
+const footerBtns = document.querySelectorAll(".navigation-btn");
 
 footerBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
+    footerBtns.forEach((btn) => {
+      btn.classList.remove("navigation-btn--active");
+    });
+    e.target.classList.add("navigation-btn--active");
     pages.forEach((page) => {
       page.classList.add("display-none");
     });
