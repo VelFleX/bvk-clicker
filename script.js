@@ -1,6 +1,12 @@
-const version = "0.1.6.6";
+const version = "0.1.6.7";
 const $version = document.getElementById("version");
 $version.textContent = version;
+
+(() => {
+  const user = window.Telegram?.WebApp.initDataUnsafe.user || {};
+  const tgTest = document.getElementById("tg_test");
+  tgTest.textContent = `user: ${JSON.stringify(user)}`;
+})();
 
 const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
@@ -189,4 +195,3 @@ function calculateExp(level) {
 }
 
 setInterval(() => currentEnergyValue !== energyCapValue && addEnergy(1), 1800);
-ву;
