@@ -1,10 +1,12 @@
-const version = "0.1.6.10";
+const version = "0.1.6.11";
 const $version = document.getElementById("version");
 $version.textContent = "v" + version;
 
 const user = window.Telegram?.WebApp.initDataUnsafe.user || {};
-const username = user?.username || "Anonymous";
-document.getElementById("username").textContent = "@" + username;
+const username = user?.username ? "@" + user?.username : "anon";
+const userAvatarLink = user?.photo_url || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+document.getElementById("username").textContent = username;
+document.getElementById("user-avatar").src = userAvatarLink;
 
 const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
