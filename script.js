@@ -1,4 +1,4 @@
-const version = "0.1.6.8";
+const version = "0.1.6.9";
 const $version = document.getElementById("version");
 $version.textContent = version;
 
