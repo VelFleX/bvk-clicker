@@ -1,12 +1,10 @@
-const version = "0.1.6.9";
+const version = "0.1.6.10";
 const $version = document.getElementById("version");
-$version.textContent = version;
+$version.textContent = "v" + version;
 
-(() => {
-  const user = window.Telegram || {};
-  const tgTest = document.getElementById("tg_test");
-  tgTest.textContent = `user: ${JSON.stringify(user)}`;
-})();
+const user = window.Telegram?.WebApp.initDataUnsafe.user || {};
+const username = user?.username || "Anonymous";
+document.getElementById("username").textContent = "@" + username;
 
 const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
