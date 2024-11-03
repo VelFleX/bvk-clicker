@@ -1,4 +1,4 @@
-const version = "0.1.6.11";
+const version = "0.1.6.12";
 const $version = document.getElementById("version");
 $version.textContent = "v" + version;
 
@@ -7,6 +7,7 @@ const username = user?.username ? "@" + user?.username : "anon";
 const userAvatarLink = user?.photo_url || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 document.getElementById("username").textContent = username;
 document.getElementById("user-avatar").src = userAvatarLink;
+console.log(user);
 
 const setCash = (key, value) => localStorage.setItem(key, value);
 const getCash = (key) => localStorage.getItem(key);
