@@ -1,4 +1,4 @@
-const version = "0.1.6.12";
+const version = "0.1.7";
 const $version = document.getElementById("version");
 $version.textContent = "v" + version;
 
@@ -51,16 +51,35 @@ let currentExpValue = parseInt(getCash("currentExp")) || 0;
 
 const updateSlogan = (clicks) => {
   const slogans = {
-    100000: "Бог денег",
-    50000: "Богосатана",
-    10000: "Внук Мавроди",
-    5000: "5тыщ 5тыщ",
-    2000: "Адепт",
-    1000: "Десятник",
-    500: "Банду Елькина под суд!",
-    100: "Всем всё платится",
-    0: "Внуку помогай маслёнок",
+    9000000000000000: "Богосатана",
+    1000000000000000: "Бог денег",
+    100000000000000: "Архидемон Финансов",
+    10000000000000: "Повелитель Блокчейнов",
+    1000000000000: "Магнат Триллионов",
+    100000000000: "Великий Царь Цифры",
+    10000000000: "Император Кодекса",
+    1000000000: "Царь Новой Эры",
+    100000000: "Техно-Мастер",
+    10000000: "Архитектор Пирамиды",
+    1000000: "Верховный Иллюминат",
+    500000: "Бог Криптокошелька",
+    100000: "Криптофеодал",
+    50000: "Проповедник Золотого Тельца",
+    25000: "Виртуоз Кодирования",
+    10000: "Шейх Биткоина",
+    5000: "Внук Мавроди",
+    2000: "Адепт Пирамиды",
+    1000: "Десятник Криптовалюты",
+    500: "Координатор Сетевого Бога",
+    250: "Скромный Продавец Душ",
+    100: "Ученик Падшего Банкира",
+    50: "Собиратель Цифровых Монет",
+    25: "Посланник Рынка",
+    10: "Начинающий Пророк",
+    5: "Ученик Культа",
+    0: "Новичок",
   };
+
   const sortedKeys = Object.keys(slogans)
     .map(Number)
     .sort((a, b) => b - a);
@@ -79,7 +98,7 @@ function handleEvent(e) {
   number.classList.add("number");
   number.style.left = e.clientX + "px";
   number.style.top = e.clientY + "px";
-  number.innerText = "+1";
+  number.innerText = `+${userLevelValue}`;
   document.getElementById("root").appendChild(number);
 }
 
@@ -117,13 +136,13 @@ coin.addEventListener("touchend", function (e) {
     this.style.transform = "";
   }, 100);
 
-  clicks++;
+  clicks += userLevelValue;
   setCash("clicks", clicks);
   updateSlogan(clicks);
   counter.textContent = clicks.toLocaleString() + " BVK";
 
   decEnergy(1);
-  addExp(1);
+  addExp(userLevelValue);
   e.preventDefault();
 });
 
